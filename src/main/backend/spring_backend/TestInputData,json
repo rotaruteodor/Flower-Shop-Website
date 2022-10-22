@@ -1,0 +1,16 @@
+{
+  "firstName": "Teodor",
+  "lastName": "Rotaru",
+  "emailAddress": "rotaruteodorgabriel@gmail.com",
+  "password": "1234",
+  "orders": [
+    {
+      "creationDate": "12/10/2022",
+      "status": "DELIVERED",
+      "flowerArrangements": []
+    }
+  ],
+  "shoppingCart": {
+    "flowerArrangements": []
+  }
+}
