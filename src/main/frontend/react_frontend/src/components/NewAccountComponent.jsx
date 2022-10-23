@@ -95,16 +95,16 @@ export const NewAccountComponent = ({openPopup}) => {
                 <h1 id="h1RegisterTitle">Register here!</h1>
 
                 <input id="textBoxRegisterFirstName" className="body" type="text" placeholder="First name" ></input>
-                <label id="labelRegisterFirstName" className="registerLabels" style={{display: "none"}}>Firstname too short</label>
+                <label id="labelRegisterFirstName" className="registerLabels">Firstname too short</label>
 
                 <input id="textBoxRegisterLastName" className="body" type="text" placeholder="Last name" ></input>
-                <label id="labelRegisterLastName" className="registerLabels" style={{display: "none"}}>Lastname too short</label>
+                <label id="labelRegisterLastName" className="registerLabels">Lastname too short</label>
 
                 <input id="textBoxRegisterEmail" className="body" type="text" placeholder="Email"  ></input>
-                <label id="labelRegisterEmail" className="registerLabels" style={{display: "none"}}>Invalid Email</label>
+                <label id="labelRegisterEmail" className="registerLabels">Invalid Email</label>
 
                 <input id="textBoxRegisterPassword" className="body" type="password" placeholder="Password"></input>
-                <label id="labelRegisterPassword" className="registerLabels" style={{display: "none"}}>Password too short</label>
+                <label id="labelRegisterPassword" className="registerLabels">Password too short</label>
 
                 <div className="footer">
                     <button id="btnRegister" className="footer" type="button" onClick={addUserToDatabase}>Register</button>

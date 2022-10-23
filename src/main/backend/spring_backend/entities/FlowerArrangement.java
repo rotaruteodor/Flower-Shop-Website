@@ -35,7 +35,7 @@ public class FlowerArrangement {
     private String imageUrl;
 
     @OneToMany(targetEntity = IndividualProductOfArrangement.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "arrangement_productsOfArrangements_fk")
+    @JoinColumn(name = "arrangement_products_of_arrangements_fk")
     private List<IndividualProductOfArrangement> contents;
 
 }

@@ -1,12 +1,11 @@
 package spring_backend.controllers;
 
+import org.springframework.web.bind.annotation.*;
+import spring_backend.entities.Color;
+import spring_backend.entities.IndividualProduct;
 import spring_backend.entities.IndividualProductOfArrangement;
 import spring_backend.repositories.IndividualProductsOfArrangementsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -22,5 +21,24 @@ public class IndividualProductsOfArrangementsController {
     public List<IndividualProductOfArrangement> getAll(){
         return individualProductsOfArrangementsRepository.findAll();
     }
+
+    @PostMapping("/add-individual-product-of-arrangement")
+    public IndividualProductOfArrangement addProductOfArrangement
+            (@RequestBody IndividualProductOfArrangement product) {
+        return individualProductsOfArrangementsRepository.save(product);
+    }
+
+//    @PostMapping("/add-individual-product-of-arrangement/{individualProductId}/{colorId}")
+//    public IndividualProductOfArrangement addProductOfArrangement
+//            (@RequestBody IndividualProductOfArrangement productOfArrangement,
+//             @PathVariable Long individualProductId,
+//             @PathVariable Long colorId) {
+//        IndividualProduct product =
+//                Color color =
+//                productOfArrangement.setIndividualProduct(product);
+//        productOfArrangement.setColor(color);
+//        return individualProductsOfArrangementsRepository.save(productOfArrangement);
+//    }
+
 
 }

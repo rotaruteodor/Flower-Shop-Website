@@ -18,12 +18,12 @@ public class IndividualProductOfArrangement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(targetEntity = IndividualProduct.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "prdOfArrg_prd_fk")
+    @ManyToOne(targetEntity = IndividualProduct.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "prd_of_arrg_prd_fk")
     private IndividualProduct individualProduct;
 
-    @OneToOne(targetEntity = Color.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "prdOfArrg_color_fk")
+    @ManyToOne(targetEntity = Color.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "prd_of_arrg_color_fk")
     private Color color;
 
     @Column(name = "quantity")

@@ -38,12 +38,12 @@ public class UsersController {
     }
 
     @GetMapping("/users/findByCredentials")
-    public ResponseEntity<User> getUserByCredentials(@RequestParam String email, @RequestParam(required = false) String password) {
+    public ResponseEntity<User> getUserByCredentials(@RequestParam String email,
+                                                     @RequestParam(required = false) String password) {
         User user = usersRepository
                 .findAll()
                 .stream()
-                .filter(
-                        u -> u.getEmailAddress().equals(email) &&
+                .filter(u -> u.getEmailAddress().equals(email) &&
                                 (password == null || u.getPassword().equals(password)))
                 .findFirst()
                 .orElseThrow(() -> new ResourceNotFoundException("User doesn't exist"));
