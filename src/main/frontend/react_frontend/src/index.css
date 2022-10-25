@@ -224,9 +224,34 @@ input:-ms-input-placeholder {
   font-style: italic;
 }
 
-/* li {
-  color: whitesmoke;
-  font-size: 20px;
-  text-align: center;
-  list-style-position: inside;
-} */
+header {
+  padding: 1rem 0;
+}
+
+.product_row {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  text-align: right;
+  position: relative;
+  width: 500px;
+  display: inline-block;
+}
+
+.product_image{
+  display: table-row;
+  margin-left: 10px;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+}
+
+.product_detail {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.product_price {
+  font-weight: bold;
+  font-size: 140%;
+}

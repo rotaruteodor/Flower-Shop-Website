@@ -15,7 +15,7 @@ export const LoginComponent = () => {
         let email = document.getElementById('textBoxInputEmail').value.trim()
         let password = document.getElementById('textBoxInputPassword').value.trim()
 
-        UsersService.getUserByEmailAndPassword(email, password)
+        UsersService.getUserByCredentials(email, password)
             .then((response) => {
                 navigate('mainPage', { state: { user: response.data } })
             })

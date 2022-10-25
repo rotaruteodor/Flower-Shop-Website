@@ -1,47 +1,47 @@
 import axios from 'axios'
 
-const MAIN_USERS_URL = "http://localhost:8080/flowershop_backend/v1/users"
-const ADD_USER_URL = "http://localhost:8080/flowershop_backend/v1/add-user"
-const GET_USER_BY_CREDENTIALS_URL = "http://localhost:8080/flowershop_backend/v1/users/findByCredentials"
-const DELETE_USER_URL = "http://localhost:8080/flowershop_backend/v1/delete-user"
+const USERS_MAIN_URL = "http://localhost:8080/flowershop-backend/users"
+const GET_USER_BY_CREDENTIALS_URL = USERS_MAIN_URL + "/findByCredentials"
 
 class UsersService {
 
-    getAllUsers(){
-        return axios.get(MAIN_USERS_URL);
+    getAllUsers() {
+        return axios.get(USERS_MAIN_URL);
     }
 
-    getUserById(userId){
-        return axios.get(MAIN_USERS_URL + '/' + userId);
+    getUserById(userId) {
+        return axios.get(USERS_MAIN_URL + '/' + userId);
     }
 
-    addUser(user){
-        return axios.post(ADD_USER_URL, user);
+    addUser(user) {
+        return axios.post(USERS_MAIN_URL, user);
     }
 
-    updateUser(userId, user){
-        return axios.put(MAIN_USERS_URL + '/' + userId, user);
+    updateUser(userId, user) {
+        return axios.put(USERS_MAIN_URL + '/' + userId, user);
     }
 
-    getUserByEmailAndPassword(emailToSearch, passwordToSearch){
+    getUserByCredentials(emailToSearch, passwordToSearch) {
         return axios.get(GET_USER_BY_CREDENTIALS_URL,
-            { params: {
-                email: emailToSearch,
-                password: passwordToSearch
-              }
+            {
+                params: {
+                    email: emailToSearch,
+                    password: passwordToSearch
+                }
             })
     }
 
-    getUserByEmail(emailToSearch){
+    getUserByEmail(emailToSearch) {
         return axios.get(GET_USER_BY_CREDENTIALS_URL,
-            { params: {
-                email: emailToSearch
-              }
+            {
+                params: {
+                    email: emailToSearch
+                }
             })
     }
 
-    deleteUserById(userId){
-        return axios.delete(DELETE_USER_URL + '/' + userId)
+    deleteUserById(userId) {
+        return axios.delete(USERS_MAIN_URL + '/' + userId)
     }
 
 }

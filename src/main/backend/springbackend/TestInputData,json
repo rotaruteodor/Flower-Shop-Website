@@ -1,0 +1,27 @@
+{{current_timestamp}}
+** User **
+{
+  "firstName": "Teodor",
+  "lastName": "Rotaru",
+  "emailAddress": "rotaruteodorgabriel@gmail.com",
+  "password": "1234",
+  "orders": [],
+  "shoppingCart": {
+    "shoppingCartFlowerArrangements": []
+  }
+}
+
+** IndividualProduct **
+
+{
+   "name": "Rose",
+   "description": "The flower of the rose plant can be different sizes. It may be as small as 1/2 inch across to a diameter of almost 7 inches. Also, roses can be used for good scent. The scent of the rose comes from tiny perfume glands on the petals, which can be seen through a powerful microscope. Sometimes rose petals are dried and packed so that you can use them for decoration or for scent."
+}
+
+** IndividualProductOfArrangement **
+{
+    {
+        "name": "Rose",
+        "description": "The flower of the rose plant can be different sizes. It may be as small as 1/2 inch across to a diameter of almost 7 inches. Also, roses can be used for good scent. The scent of the rose comes from tiny perfume glands on the petals, which can be seen through a powerful microscope. Sometimes rose petals are dried and packed so that you can use them for decoration or for scent.",
+    }
+}
