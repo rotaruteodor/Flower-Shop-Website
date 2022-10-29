@@ -3,13 +3,12 @@ package springbackend.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import springbackend.dto.FlowerArrangementDto;
-import springbackend.entities.Color;
-import springbackend.entities.FlowerArrangement;
-import springbackend.entities.FlowerArrangementComponent;
-import springbackend.entities.FlowerArrangementComponentGeneralInfo;
+import springbackend.dto.UserDto;
+import springbackend.entities.*;
 import springbackend.exceptions.ErrorMessage;
 import springbackend.exceptions.ResourceNotFoundException;
 import springbackend.mappers.FlowerArrangementMapper;
@@ -46,30 +45,73 @@ public class FlowerArrangementService {
     public ResponseEntity<FlowerArrangementDto> findById(@PathVariable Long id) {
         return flowerArrangementsRepository.findById(id)
                 .map(f -> mapper.toDto(f))
-                .map(fDto -> ResponseEntity.ok(fDto))
+                .map(ResponseEntity::ok)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         ErrorMessage.getDoesNotExistErrorMessage("FlowerArrangement", id)));
     }
 
-    public ResponseEntity<FlowerArrangementDto> add(
-            @RequestBody FlowerArrangement flowerArrangement) {
+    public ResponseEntity<FlowerArrangementDto> add(@RequestBody FlowerArrangement flowerArrangement) {
 
-        for (FlowerArrangementComponent component :
-                flowerArrangement.getComponents()) {
-            try {
-                component.setFlowerArrangementComponentGeneralInfo(
-                        flowerArrangementComponentGeneralInfoRepository.findById(
-                                component.getFlowerArrangementComponentGeneralInfo().getId()).get());
-                component.setColor(
-                        colorsRepository.findById(
-                                component.getColor().getId()).get());
-            } catch (Exception e) {
-                throw new ResourceNotFoundException(
-                                "Color or flower arrangement general info doesn't exist"); //todo treat each case?
-            }
+        for (FlowerArrangementComponent component : flowerArrangement.getComponents()) {
+            flowerArrangementComponentGeneralInfoRepository.findById(
+                            component.getFlowerArrangementComponentGeneralInfo().getId())
+                    .map(flArgGeneralInfo -> { // enters map only if findById returns non-null
+                        component.setFlowerArrangementComponentGeneralInfo(flArgGeneralInfo);
+                        return flArgGeneralInfo;
+                    })
+                    .orElseThrow(() -> new ResourceNotFoundException("FLOWER ARRG GEN INFO NOT FOUND"));
+
+            colorsRepository.findById(component.getColor().getId())
+                    .map(color -> {
+                        component.setColor(color);
+                        return color;
+                    })
+                    .orElseThrow(() -> new ResourceNotFoundException("COLOR NOT FOUND"));
         }
 
         flowerArrangementsRepository.save(flowerArrangement);
         return ResponseEntity.ok(mapper.toDto(flowerArrangement));
+    }
+
+    public ResponseEntity<FlowerArrangementDto> updateById(@PathVariable Long id,
+                                                           @RequestBody FlowerArrangement flowerArrangement) {
+        FlowerArrangement currentFlowerArrangement = flowerArrangementsRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(ErrorMessage
+                        .getDoesNotExistErrorMessage("flowerArrangement", id)));
+
+        for (FlowerArrangementComponent component : flowerArrangement.getComponents()) {
+
+            flowerArrangementComponentGeneralInfoRepository.findById(
+                            component.getFlowerArrangementComponentGeneralInfo().getId())
+                    .map(flArgGeneralInfo -> {
+                                component.setFlowerArrangementComponentGeneralInfo(flArgGeneralInfo);
+                                return flArgGeneralInfo;
+                            }
+                    )
+                    .orElseThrow(() -> new ResourceNotFoundException("FlowerArrangementComponentGeneralInfo NOT FOUND"));
+
+            colorsRepository.findById(component.getColor().getId())
+                    .map(color -> {
+                        component.setColor(color);
+                        return color;
+                    })
+                    .orElseThrow(() -> new ResourceNotFoundException("Color NOT FOUND"));
+        }
+
+        currentFlowerArrangement.setName(flowerArrangement.getName());
+        currentFlowerArrangement.setPrice(flowerArrangement.getPrice());
+        currentFlowerArrangement.setType(flowerArrangement.getType());
+        currentFlowerArrangement.setImageUrl(flowerArrangement.getImageUrl());
+        currentFlowerArrangement.setComponents(flowerArrangement.getComponents());
+
+        FlowerArrangement updatedFlowerArrangement = flowerArrangementsRepository.save(currentFlowerArrangement);
+
+        FlowerArrangementDto flowerArrangementDto = mapper.toDto(updatedFlowerArrangement);
+        return ResponseEntity.ok(flowerArrangementDto);
+    }
+
+    public ResponseEntity<Boolean> deleteAll() {
+        flowerArrangementsRepository.deleteAll();
+        return ResponseEntity.ok(true);
     }
 }

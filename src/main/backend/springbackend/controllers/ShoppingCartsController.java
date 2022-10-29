@@ -18,7 +18,8 @@ public class ShoppingCartsController {
     private static final String SHOPPING_CARTS_MAIN_URL = "/shopping-carts";
 
     @Autowired
-    private static ShoppingCartService service;
+    private ShoppingCartService service;
+
     @GetMapping(SHOPPING_CARTS_MAIN_URL)
     public List<ShoppingCartDto> findAll(){
         return service.findAll();

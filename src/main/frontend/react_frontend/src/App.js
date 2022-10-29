@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { LoginComponent } from './components/LoginComponent'
 import { MainPageComponent } from './components/MainPageComponent';
+import {FlowerArrangementDetails} from './components/FlowerArrangementDetails';
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<LoginComponent />} />
-          <Route exact path="/mainPage" element={<MainPageComponent />} />
+          <Route exact path="/mainPage" element={<MainPageComponent/>} />
+          <Route exact path="/flowerArrangementDetails" element={<FlowerArrangementDetails/>} />
         </Routes>
       </Router>
     </div>

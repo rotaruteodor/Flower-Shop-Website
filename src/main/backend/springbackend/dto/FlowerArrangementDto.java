@@ -22,6 +22,6 @@ public class FlowerArrangementDto {
     private BigDecimal price;
     private FlowerArrangementType type;
     private String imageUrl;
-    private List<FlowerArrangementComponent> components;
+    private List<FlowerArrangementComponentDto> components;
 
 }

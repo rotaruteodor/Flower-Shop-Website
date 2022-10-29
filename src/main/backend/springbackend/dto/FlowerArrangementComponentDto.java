@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import springbackend.entities.Color;
-import springbackend.entities.FlowerArrangementComponentGeneralInfo;
 
 @Data
 @AllArgsConstructor
@@ -14,7 +13,7 @@ import springbackend.entities.FlowerArrangementComponentGeneralInfo;
 public class FlowerArrangementComponentDto {
 
     private Long id;
-    private FlowerArrangementComponentGeneralInfo individualProduct;
+    private FlowerArrangementComponentGeneralInfoDto flowerArrangementComponentGeneralInfo;
     private Color color;
     private Integer quantity;
 

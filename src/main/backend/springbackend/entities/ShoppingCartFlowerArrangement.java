@@ -23,6 +23,10 @@ public class ShoppingCartFlowerArrangement {
     @JoinColumn(name = "flower_arrangement_id")
     private FlowerArrangement flowerArrangement;
 
+    @OneToOne(targetEntity = ShoppingCart.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "shopping_cart_id")
+    private ShoppingCart shoppingCart;
+
     @Column(name = "quantity")
     private Long quantity;
 }

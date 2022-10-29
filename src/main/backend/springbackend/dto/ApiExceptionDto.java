@@ -4,16 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import springbackend.entities.FlowerArrangement;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ShoppingCartFlowerArrangementDto {
+public class ApiExceptionDto {
 
-    private Long id;
-    private FlowerArrangementDto flowerArrangement;
-    private Long quantity;
+    private String code;
+    private String message;
 
+//    private List<ValidationErrorDto> errors;
 }

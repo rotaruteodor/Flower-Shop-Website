@@ -40,20 +40,21 @@ public class UserService {
                         ErrorMessage.getDoesNotExistErrorMessage("User", id)));
     }
 
+    @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     public ResponseEntity<UserDto> findByCredentials(@RequestParam String email,
-                                                     @RequestParam(required = false) String password) {
-//        password.map(passwordOptional -> usersRepository.findByEmailAddressAndPassword(email, password.get()))
-//                .orElseGet(() -> usersRepository.findByEmailAddress(email))
-//                .map(userOptional -> userMapper.toDto(userOptional))
-//                .map(ResponseEntity::ok)
-//                .orElseThrow(() -> new ResourceNotFoundException("error"));
+                                                     @RequestParam Optional<String> password) {
+        return password.map(pass -> repository.findByEmailAddressAndPassword(email, pass))
+                .orElseGet(() -> repository.findByEmailAddress(email))
+                .map(user -> mapper.toDto(user))
+                .map(ResponseEntity::ok)
+                .orElseThrow(() -> new ResourceNotFoundException("error"));
 
-        Optional<User> userOptional = password == null ?
-                repository.findByEmailAddress(email) : repository.findByEmailAddressAndPassword(email, password);;
-        if (userOptional.isPresent()) {
-            return ResponseEntity.ok(mapper.toDto(userOptional.get()));
-        }
-        throw new ResourceNotFoundException(ErrorMessage.getUserDoesNotExistErrorMessage(email));
+//        Optional<User> userOptional = password == null ?
+//                repository.findByEmailAddress(email) : repository.findByEmailAddressAndPassword(email, password);
+//        if (userOptional.isPresent()) {
+//            return ResponseEntity.ok(mapper.toDto(userOptional.get()));
+//        }
+//        throw new ResourceNotFoundException(ErrorMessage.getUserDoesNotExistErrorMessage(email));
     }
 
     public ResponseEntity<UserDto> add(@RequestBody User user) {

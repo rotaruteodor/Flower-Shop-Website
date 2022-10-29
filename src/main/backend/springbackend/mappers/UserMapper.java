@@ -1,18 +1,20 @@
 package springbackend.mappers;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import springbackend.dto.UserDto;
+import springbackend.entities.ShoppingCart;
 import springbackend.entities.User;
 
 @Mapper
-public interface UserMapper {
-//    @Mapping(target = "id", ignore = true)
-//    @Mapping(target = "nrOfOrders", expression = "java(method(user))")
-    UserDto toDto(User user);
+public abstract class UserMapper {
 
-//    default Integer method(User user) {
-//        return 3;
-//    }
+    @Autowired
+    protected ShoppingCartMapper shoppingCartMapper;
+
+    @Mapping(target = "shoppingCart", expression = "java(shoppingCartMapper.toDto(user.getShoppingCart()))")
+    public abstract UserDto toDto(User user);
 }
 
 // entity

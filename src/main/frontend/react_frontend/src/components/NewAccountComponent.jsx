@@ -56,7 +56,7 @@ export const NewAccountComponent = ({openPopup}) => {
         if (isEmailPatternValid(document.getElementById('textBoxRegisterEmail').value.trim())) {
             let email = document.getElementById('textBoxRegisterEmail').value.trim()
 
-            UsersService.getUserByEmail(email)
+            UsersService.getByEmail(email)
                 .then(() => {
                     document.getElementById('labelRegisterEmail').innerHTML = 'There is already an account for this email';
                     document.getElementById('labelRegisterEmail').style.display = 'block';
@@ -72,7 +72,7 @@ export const NewAccountComponent = ({openPopup}) => {
                             shoppingCart: {flowerArrangements: []}
                         }
 
-                        UsersService.addUser(newUser)
+                        UsersService.add(newUser)
                         .then(response => {
                             onAccountSuccessfullyCreated(response.data.firstName)
                         })

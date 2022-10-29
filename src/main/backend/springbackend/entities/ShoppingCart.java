@@ -23,4 +23,5 @@ public class ShoppingCart {
     @OneToMany(targetEntity = ShoppingCartFlowerArrangement.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "shopping_cart_id")
     private List<ShoppingCartFlowerArrangement> shoppingCartFlowerArrangements;
+
 }

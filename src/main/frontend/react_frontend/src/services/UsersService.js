@@ -5,23 +5,23 @@ const GET_USER_BY_CREDENTIALS_URL = USERS_MAIN_URL + "/findByCredentials"
 
 class UsersService {
 
-    getAllUsers() {
+    getAll() {
         return axios.get(USERS_MAIN_URL);
     }
 
-    getUserById(userId) {
+    getById(userId) {
         return axios.get(USERS_MAIN_URL + '/' + userId);
     }
 
-    addUser(user) {
+    add(user) {
         return axios.post(USERS_MAIN_URL, user);
     }
 
-    updateUser(userId, user) {
+    update(userId, user) {
         return axios.put(USERS_MAIN_URL + '/' + userId, user);
     }
 
-    getUserByCredentials(emailToSearch, passwordToSearch) {
+    getByCredentials(emailToSearch, passwordToSearch) {
         return axios.get(GET_USER_BY_CREDENTIALS_URL,
             {
                 params: {
@@ -31,7 +31,7 @@ class UsersService {
             })
     }
 
-    getUserByEmail(emailToSearch) {
+    getByEmail(emailToSearch) {
         return axios.get(GET_USER_BY_CREDENTIALS_URL,
             {
                 params: {
@@ -40,7 +40,7 @@ class UsersService {
             })
     }
 
-    deleteUserById(userId) {
+    deleteById(userId) {
         return axios.delete(USERS_MAIN_URL + '/' + userId)
     }
 

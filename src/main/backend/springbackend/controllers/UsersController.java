@@ -8,6 +8,7 @@ import springbackend.entities.User;
 import springbackend.services.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -31,9 +32,10 @@ public class UsersController {
         return service.findById(id);
     }
 
+    @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     @GetMapping(USERS_MAIN_URL + "/findByCredentials")
     public ResponseEntity<UserDto> findByCredentials(@RequestParam String email,
-                                                     @RequestParam(required = false) String password) {
+                                                     @RequestParam Optional<String> password) {
         return service.findByCredentials(email, password);
     }
 

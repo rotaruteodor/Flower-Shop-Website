@@ -20,6 +20,6 @@ public class OrderDto {
     private Long id;
     private LocalDate creationDate;
     private OrderStatus status;
-    private List<FlowerArrangement> flowerArrangements;
+    private List<FlowerArrangementDto> flowerArrangements;
 
 }

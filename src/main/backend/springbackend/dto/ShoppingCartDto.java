@@ -10,6 +10,7 @@ import springbackend.entities.ShoppingCartFlowerArrangement;
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -18,5 +19,7 @@ import java.util.List;
 @Builder
 public class ShoppingCartDto {
     private Long id;
-    private List<ShoppingCartFlowerArrangement> shoppingCartFlowerArrangements;
+    private List<ShoppingCartFlowerArrangementDto> shoppingCartFlowerArrangements;
+
+    private BigDecimal totalPrice;
 }

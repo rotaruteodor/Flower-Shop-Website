@@ -11,17 +11,39 @@
   }
 }
 
-** IndividualProduct **
-
-{
-   "name": "Rose",
-   "description": "The flower of the rose plant can be different sizes. It may be as small as 1/2 inch across to a diameter of almost 7 inches. Also, roses can be used for good scent. The scent of the rose comes from tiny perfume glands on the petals, which can be seen through a powerful microscope. Sometimes rose petals are dried and packed so that you can use them for decoration or for scent."
-}
-
-** IndividualProductOfArrangement **
+** Flower Arrg General Info **
 {
     {
         "name": "Rose",
         "description": "The flower of the rose plant can be different sizes. It may be as small as 1/2 inch across to a diameter of almost 7 inches. Also, roses can be used for good scent. The scent of the rose comes from tiny perfume glands on the petals, which can be seen through a powerful microscope. Sometimes rose petals are dried and packed so that you can use them for decoration or for scent.",
     }
+}
+
+
+** Flower Arrg **
+{
+   "name": "Love is in the air",
+   "price": 219.99,
+    "type": "BASKET",
+    "imageUrl":"https://pngimg.com/uploads/bouquet/bouquet_PNG63.png",
+    "components": [
+        {
+            "flowerArrangementComponentGeneralInfo": {
+                "id": 1
+            },
+            "color": {
+                "id": 1
+            },
+            "quantity": 12
+        },
+        {
+            "flowerArrangementComponentGeneralInfo": {
+                "id": 2
+            },
+            "color": {
+                "id": 2
+            },
+            "quantity": 22
+        }
+        ]
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 import {NewAccountComponent} from './NewAccountComponent'
 import UsersService from '../services/UsersService';
 
@@ -15,7 +14,7 @@ export const LoginComponent = () => {
         let email = document.getElementById('textBoxInputEmail').value.trim()
         let password = document.getElementById('textBoxInputPassword').value.trim()
 
-        UsersService.getUserByCredentials(email, password)
+        UsersService.getByCredentials(email, password)
             .then((response) => {
                 navigate('mainPage', { state: { user: response.data } })
             })
