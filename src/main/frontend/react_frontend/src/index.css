@@ -242,7 +242,7 @@ header {
 }
 
 .product_image {
-margin-top: 10px;
+  margin-top: 10px;
 }
 
 .product_detail {
@@ -254,7 +254,7 @@ margin-top: 10px;
   font-size: 140%;
 }
 
-.add_to_cart_buttons{
+.add_to_cart_buttons {
   margin-top: 7px;
 }
 
@@ -285,6 +285,7 @@ margin-top: 10px;
 }
 
 .shoppingCartContainer {
+  overflow-y: scroll;
   width: 800px;
   height: 600px;
   border-radius: 12px;
@@ -303,12 +304,13 @@ margin-top: 10px;
 #btnCloseShoppingCartForm {
   background-color: transparent;
   border: none;
+  display: table-cell;
   font-size: 25px;
   cursor: pointer;
-  color: blue;
+  color: black;
   border-style: solid;
   border-width: 2px;
-  border-radius: 20px;
+  border-radius: 12px;
   border-color: black;
 }
 
@@ -327,3 +329,54 @@ margin-top: 10px;
   text-align: center;
 }
 
+.shopping_cart_row {
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: black;
+}
+
+.shopping_cart_item_image {
+  float: left;
+}
+
+#shopping_cart_item_total_price {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.shopping_cart_item_detail {
+  display: inline-block;
+}
+
+.shopping_cart_item_price {
+  font-weight: bold;
+  font-size: 20px;
+  display: inline-block;
+}
+
+#flowerArrangementName {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.shopping_cart_item_quantity {
+  font-weight: bold;
+}
+
+#shopping_cart_item_quantity_input{
+  width: 30px;
+  text-align: center;
+}
+
+#shoppingCartButtons {
+  display: table;
+  font-size: 30px;
+}
+
+#remove_flower_arrg_from_shopping_cart{
+  color: red;
+}

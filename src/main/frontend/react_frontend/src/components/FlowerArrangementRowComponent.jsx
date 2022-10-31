@@ -17,13 +17,12 @@ export const FlowerArrangementRowComponent = (props) => {
             props.user.shoppingCart.id,
             props.flowerArrangement.id)
             .then(res => {
-                
-                alert(JSON.stringify(res.data))
+                props.updateShoppingCartLength(props.user.shoppingCart.shoppingCartFlowerArrangements.push(res.data).length)
+                props.updateShoppingCartTotalPrice(props.user.shoppingCart.totalPrice += props.flowerArrangement.price)
             })
             .catch((error) => alert(error.response.status))
-        
-    }   
-
+    }
+    
     return (
         <div className="product_row">
             <div className="product_image">
@@ -41,7 +40,6 @@ export const FlowerArrangementRowComponent = (props) => {
                 </div>
             </div>
             <button className='add_to_cart_buttons' onClick={addFlowerArrangementToCart}>Add to cart</button>
-
         </div>
     )
 }
