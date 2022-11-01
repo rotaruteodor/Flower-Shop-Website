@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import springbackend.dto.ShoppingCartFlowerArrangementDto;
-import springbackend.dto.UserDto;
 import springbackend.entities.ShoppingCartFlowerArrangement;
 import springbackend.exceptions.ErrorMessage;
 import springbackend.exceptions.ResourceNotFoundException;
@@ -69,6 +69,29 @@ public class ShoppingCartFlowerArrangementService {
         shoppingCartFlowerArrangementRepository.save(shoppingCartFlowerArrangement);
         return ResponseEntity.ok(mapper.toDto(shoppingCartFlowerArrangement));
     }
+
+    public ShoppingCartFlowerArrangementDto updateQuantityById(@PathVariable Long id,
+                                                               @PathVariable Long newQuantity) {
+        return shoppingCartFlowerArrangementRepository
+                .findById(id)
+                .map(scfa -> {
+                    shoppingCartFlowerArrangementRepository.updateQuantity(id, newQuantity);
+                    return mapper.toDto(scfa);
+                })
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.getDoesNotExistErrorMessage("ShoppingCartFlowerArrangement", id)));
+    }
+
+    public ResponseEntity<ShoppingCartFlowerArrangementDto> deleteById(@PathVariable Long shoppingCartFlowerArrangementId) {
+        return shoppingCartFlowerArrangementRepository.findById(shoppingCartFlowerArrangementId)
+                .map(scfa -> {
+                    shoppingCartFlowerArrangementRepository.delete(scfa);
+                    return ResponseEntity.ok(mapper.toDto(scfa));
+                })
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        ErrorMessage.getDoesNotExistErrorMessage("ShoppingCartFlowerArrangementId", shoppingCartFlowerArrangementId)));
+    }
+
 }
 
 // todo kafka 2 services

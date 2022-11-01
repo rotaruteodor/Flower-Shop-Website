@@ -80,12 +80,13 @@ public class UserService {
     }
 
     public ResponseEntity<UserDto> deleteById(@PathVariable Long id) {
-        User user = repository.findById(id)
+        return repository.findById(id)
+                .map(user -> {
+                    UserDto userDto = mapper.toDto(user);
+                    repository.delete(user);
+                    return ResponseEntity.ok(userDto);
+                })
                 .orElseThrow(() -> new ResourceNotFoundException(
                         ErrorMessage.getDoesNotExistErrorMessage("User", id)));
-        repository.delete(user);
-
-        UserDto userDto = mapper.toDto(user);
-        return ResponseEntity.ok(userDto);
     }
 }

@@ -1,7 +1,16 @@
 import React from 'react'
 import { ShoppingCartRowComponent } from './ShoppingCartRowComponent'
+import { useState } from "react";
 
-export const ShoppingCartComponent = ({ openPopup, shoppingCart }) => {
+export const ShoppingCartComponent = (props) => {
+
+    const [shoppingCart, setShoppingCart] = useState(props.shoppingCart);
+
+    function onCloseShoppingCartForm() {
+        props.openPopup(false)
+
+    }
+
     return (
         <div className="shoppingCartBackground">
             <div className="shoppingCartContainer" id="shoppingCartForm">
@@ -9,11 +18,11 @@ export const ShoppingCartComponent = ({ openPopup, shoppingCart }) => {
 
                 <div id='shoppingCartButtons'>
                     <div>
-                        <button id="btnCloseShoppingCartForm" onClick={() => alert("todo")}> Check out </button>
+                        <button id="btnCheckOut" onClick={() => alert("todo")}> Check out </button>
                     </div>
 
                     <div>
-                        <button id="btnCloseShoppingCartForm" onClick={() => openPopup(false)}> Continue shopping  </button>
+                        <button id="btnCloseShoppingCartForm" onClick={onCloseShoppingCartForm}> Continue shopping  </button>
                     </div>
                 </div>
                 {

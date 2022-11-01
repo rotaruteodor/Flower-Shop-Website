@@ -19,11 +19,15 @@ public class ShoppingCartFlowerArrangement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(targetEntity = FlowerArrangement.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = FlowerArrangement.class, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "flower_arrangement_id")
     private FlowerArrangement flowerArrangement;
 
-    @OneToOne(targetEntity = ShoppingCart.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Order.class, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @ManyToOne(targetEntity = ShoppingCart.class, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "shopping_cart_id")
     private ShoppingCart shoppingCart;
 

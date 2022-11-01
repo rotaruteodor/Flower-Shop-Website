@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import ShoppingCartFlowerArrangementService from '../services/ShoppingCartFlowerArrangementService';
 
 export const ShoppingCartRowComponent = (props) => {
 
@@ -8,18 +9,22 @@ export const ShoppingCartRowComponent = (props) => {
 
     const [currentQuantity, setCurrentQuantity] = useState(props.shoppingCartFlowerArrangement.quantity);
 
+
     const onQuantityChange = event => {
         setCurrentQuantity(event.target.value);
-        document.getElementById('shopping_cart_item_total_price')
-            .innerHTML = "Total: $" + (currentQuantity * props.shoppingCartFlowerArrangement.flowerArrangement.price).toFixed(2)
+        ShoppingCartFlowerArrangementService.updateQuantityById(props.shoppingCartFlowerArrangement.id, event.target.value)
     }
 
     function seeFlowerArrangementDetailsPage() {
-        navigate('flowerArrangementDetails', { state: { flowerArrangement: props.shoppingCartFlowerArrangement.flowerArrangement } })
+        navigate('flowerArrangementDetails', {
+            state:
+                { flowerArrangement: props.shoppingCartFlowerArrangement.flowerArrangement }
+        })
     }
 
-    function removeShoppingCartFlowerArrangement(){
-
+    function removeShoppingCartFlowerArrangement() {
+        ShoppingCartFlowerArrangementService.deleteById(props.shoppingCartFlowerArrangement.id)
+        alert("removed")
     }
 
     return (
@@ -48,7 +53,7 @@ export const ShoppingCartRowComponent = (props) => {
                     />
                 </div>
                 <div id="shopping_cart_item_total_price">
-                    {"Total: $" + props.shoppingCartFlowerArrangement.quantity * props.shoppingCartFlowerArrangement.flowerArrangement.price}
+                    {"Total: $" + (currentQuantity * props.shoppingCartFlowerArrangement.flowerArrangement.price).toFixed(2)}
                 </div>
             </div>
 

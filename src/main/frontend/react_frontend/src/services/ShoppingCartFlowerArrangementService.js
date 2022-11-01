@@ -19,6 +19,13 @@ class ShoppingCartFlowerArrangementService {
             shoppingCartFlowerArrangement)
     }
 
+    updateQuantityById(id, newQuantity) {
+        return axios.put(SHOPPING_CART_FLOWER_ARRANGEMENT_MAIN_URL + '/' + id + '/' + newQuantity)
+    }
+
+    deleteById(id) {
+        return axios.delete(SHOPPING_CART_FLOWER_ARRANGEMENT_MAIN_URL + '/' + id)
+    }
 }
 
 export default new ShoppingCartFlowerArrangementService()

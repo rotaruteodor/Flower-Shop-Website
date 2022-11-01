@@ -29,8 +29,15 @@ public class Order {
     @Column(name = "status")
     private OrderStatus status;
 
-    @OneToMany(targetEntity = FlowerArrangement.class, cascade = CascadeType.ALL)
+    @Column(name = "delivery_address")
+    private String deliveryAddress;
+
+    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(targetEntity = ShoppingCartFlowerArrangement.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
-    private List<FlowerArrangement> flowerArrangements;
+    private List<ShoppingCartFlowerArrangement> shoppingCartFlowerArrangements;
 
 }

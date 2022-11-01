@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import springbackend.dto.ShoppingCartFlowerArrangementDto;
-import springbackend.dto.UserDto;
 import springbackend.entities.ShoppingCartFlowerArrangement;
-import springbackend.entities.User;
 import springbackend.services.ShoppingCartFlowerArrangementService;
 
 import java.util.List;
@@ -16,11 +14,9 @@ import java.util.List;
 @RequestMapping("/flowershop-backend")
 public class ShoppingCartFlowerArrangementController {
 
-
     private static final String SHOPPING_CART_FLOWER_ARRANGEMENT_MAIN_URL = "/shopping-cart-flower-arrangements";
     private static final String SHOPPING_CART_FLOWER_ARRANGEMENT_ID_URL = SHOPPING_CART_FLOWER_ARRANGEMENT_MAIN_URL
             + "/{id}";
-
 
     @Autowired
     private ShoppingCartFlowerArrangementService service;
@@ -42,4 +38,14 @@ public class ShoppingCartFlowerArrangementController {
         return service.add(shoppingCartFlowerArrangement, shoppingCartId, flowerArrangementId);
     }
 
+    @PutMapping(SHOPPING_CART_FLOWER_ARRANGEMENT_ID_URL + "/{quantity}")
+    public ShoppingCartFlowerArrangementDto updateQuantityById(@PathVariable Long id,
+                                                               @PathVariable(name = "quantity") Long newQuantity) {
+        return service.updateQuantityById(id, newQuantity);
+    }
+
+    @DeleteMapping(SHOPPING_CART_FLOWER_ARRANGEMENT_ID_URL)
+    public ResponseEntity<ShoppingCartFlowerArrangementDto> deleteById(@PathVariable Long id) {
+        return service.deleteById(id);
+    }
 }
