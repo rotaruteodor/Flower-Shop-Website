@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import springbackend.entities.FlowerArrangement;
+import springbackend.entities.User;
 import springbackend.entities.enums.OrderStatus;
 
 import javax.persistence.*;
@@ -20,6 +21,8 @@ public class OrderDto {
     private Long id;
     private LocalDate creationDate;
     private OrderStatus status;
-    private List<FlowerArrangementDto> flowerArrangements;
+    private String deliveryAddress;
+    private User user;
+    private List<ShoppingCartFlowerArrangementDto> shoppingCartFlowerArrangements;
 
 }

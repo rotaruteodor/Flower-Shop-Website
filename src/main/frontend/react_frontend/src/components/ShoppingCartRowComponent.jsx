@@ -12,7 +12,9 @@ export const ShoppingCartRowComponent = (props) => {
 
     const onQuantityChange = event => {
         setCurrentQuantity(event.target.value);
-        ShoppingCartFlowerArrangementService.updateQuantityById(props.shoppingCartFlowerArrangement.id, event.target.value)
+        ShoppingCartFlowerArrangementService.updateQuantityById(
+            props.shoppingCartFlowerArrangement.id, event.target.value)
+
     }
 
     function seeFlowerArrangementDetailsPage() {
@@ -24,7 +26,15 @@ export const ShoppingCartRowComponent = (props) => {
 
     function removeShoppingCartFlowerArrangement() {
         ShoppingCartFlowerArrangementService.deleteById(props.shoppingCartFlowerArrangement.id)
-        alert("removed")
+        props.shoppingCart.shoppingCartFlowerArrangements =
+            props.shoppingCart.shoppingCartFlowerArrangements
+                .filter(item => item.id != props.shoppingCartFlowerArrangement.id)
+
+        props.setShoppingCart(props.shoppingCart)
+        props.updateShoppingCartFlowerArrangements()
+        props.updateShoppingCartTotalPrice(
+            props.shoppingCart.totalPrice -=
+            props.shoppingCartFlowerArrangement.flowerArrangement.price)
     }
 
     return (
