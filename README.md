@@ -11,6 +11,11 @@ IDE: IntelijIDEA, Visual Studio Code
 <br/>
 Other: Postman, MySQL Workbench
 
+## Database schema
+
+![dbSchema](https://user-images.githubusercontent.com/108352567/201170773-c59e3210-4184-4ba8-9be8-9f71fd51e3c3.png)
+
+
 ## Screenshots
 ![1](https://user-images.githubusercontent.com/108352567/200923952-2d70e91a-4cc6-44f1-aa1d-e0546fe0b3db.png)
 <br/>
