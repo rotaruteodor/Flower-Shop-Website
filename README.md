@@ -22,3 +22,5 @@ Other: Postman, MySQL Workbench
 ![Screenshot 2022-11-09 211812](https://user-images.githubusercontent.com/108352567/200921542-86051894-9e70-46c9-be21-58cb86657739.png)
 <br/>
 ![2](https://user-images.githubusercontent.com/108352567/200925075-e7029588-f10a-4d1f-854c-15a24fe543b3.png)
+<br/>
+![flowerArrgDetailsPage](https://user-images.githubusercontent.com/108352567/201488972-167c3c28-9f28-405d-acdf-97b61132d65b.png)
