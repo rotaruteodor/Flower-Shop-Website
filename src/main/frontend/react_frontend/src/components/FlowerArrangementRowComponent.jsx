@@ -9,11 +9,16 @@ export const FlowerArrangementRowComponent = (props) => {
     let navigate = useNavigate();
 
     function seeFlowerArrangementDetailsPage() {
-        navigate('flowerArrangementDetails', { state: { flowerArrangement: props.flowerArrangement } })
+        navigate('flowerArrangementDetails', {
+            state: {
+                flowerArrangement: props.flowerArrangement,
+                user: props.user
+            }
+        })
     }
 
-    function addFlowerArrangementToCart(){
-        ShoppingCartFlowerArrangementService.add({quantity: 1},
+    function addFlowerArrangementToCart() {
+        ShoppingCartFlowerArrangementService.add({ quantity: 1 },
             props.user.shoppingCart.id,
             props.flowerArrangement.id)
             .then(res => {
@@ -22,7 +27,7 @@ export const FlowerArrangementRowComponent = (props) => {
             })
             .catch((error) => alert(error.response.status))
     }
-    
+
     return (
         <div className="product_row">
             <div className="product_image">

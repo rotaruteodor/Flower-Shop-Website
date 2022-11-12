@@ -10,6 +10,7 @@ import springbackend.entities.enums.OrderStatus;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -19,7 +20,7 @@ import java.util.List;
 public class OrderDto {
 
     private Long id;
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
     private OrderStatus status;
     private String deliveryAddress;
     private User user;

@@ -241,6 +241,19 @@ header {
   overflow: hidden;
 }
 
+.product_row_detailed {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 90%;
+  height: 1000px;
+  margin: auto;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  overflow: hidden;
+}
+
 .product_image {
   margin-top: 10px;
 }
@@ -249,13 +262,36 @@ header {
   color: white;
 }
 
+#flowerArrgNameDetails {
+  font-size: 36px;
+}
+
+
 .product_price {
   font-weight: bold;
   font-size: 140%;
 }
 
+.product_price_details {
+  font-weight: bold;
+  font-size: 200%;
+}
+
 .add_to_cart_buttons {
   margin-top: 7px;
+}
+
+.add_to_cart_buttons_details {
+  margin-top: 7px;
+  font-size: large;
+}
+
+#flowerArrgContentsTag {
+  color: white;
+  text-align: left;
+  margin-left: 20px;
+  font-style: oblique;
+  margin-top: 30px;
 }
 
 #span_current_user {
@@ -407,7 +443,7 @@ textarea::placeholder {
   font-size: 1rem;
   font-weight: bold;
   color: #9c9c9c;
-  text-align:center;
+  text-align: center;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -436,4 +472,37 @@ textarea::placeholder {
   text-align: center;
   font-weight: bold;
   cursor: pointer;
+}
+
+table,
+tr,
+td {
+  color: white;
+  width: 50%;
+  border: 1px solid white;
+  font-size: 30px;
+}
+
+th {
+  padding-right: 15px;
+  padding-bottom: 5px;
+}
+
+tr:hover {
+  background-color: gray
+}
+
+#flowerArrgComponentDescription {
+  color: white;
+  display: block;
+  text-align: left;
+  margin-left: 20px;
+}
+
+#flowerArrgContentsTable {
+  margin-left: 20px;
+}
+
+#flowerArrgContentsTableHead {
+  font-size: 20px;
 }

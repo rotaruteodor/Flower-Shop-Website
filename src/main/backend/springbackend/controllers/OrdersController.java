@@ -1,11 +1,10 @@
 package springbackend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import springbackend.dto.OrderDto;
+import springbackend.entities.Order;
 import springbackend.services.OrderService;
 
 import java.util.List;
@@ -23,5 +22,11 @@ public class OrdersController {
     @GetMapping(ORDERS_MAIN_URL)
     public List<OrderDto> findAll(){
         return service.findAll();
+    }
+
+    @PostMapping(ORDERS_MAIN_URL + "/{userId}")
+    public ResponseEntity<OrderDto> add(@RequestBody Order order, @PathVariable Long userId){
+        System.out.println("entered");
+        return service.add(order, userId);
     }
 }

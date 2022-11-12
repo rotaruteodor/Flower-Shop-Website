@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<LoginComponent />} />
           <Route exact path="/mainPage" element={<MainPageComponent/>} />
-          <Route exact path="/flowerArrangementDetails" element={<FlowerArrangementDetails/>} />
+          <Route exact path="/mainPage/flowerArrangementDetails" element={<FlowerArrangementDetails/>} />
           <Route exact path="/mainPage/checkout" element={<CheckOutComponent/>} />
         </Routes>
       </Router>

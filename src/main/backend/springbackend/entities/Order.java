@@ -8,6 +8,7 @@ import springbackend.entities.enums.OrderStatus;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -23,7 +24,7 @@ public class Order {
     private Long id;
 
     @Column(name = "creation_date")
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")

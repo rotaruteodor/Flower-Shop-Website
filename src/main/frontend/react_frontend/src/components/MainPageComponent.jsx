@@ -44,7 +44,7 @@ export const MainPageComponent = (props) => {
             openPopup={setOpenShoppingCartPopup}
             shoppingCart={location.state.user.shoppingCart}
             user={location.state.user}
-            />
+          />
         }
         {
           flowerArrangementsArray.map(fa => <FlowerArrangementRowComponent
